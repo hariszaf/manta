@@ -34,7 +34,7 @@ try:
         from scipy.stats import binom_test, norm
     else:
         from scipy.stats import binomtest as binom_test, norm
-except ImportError as e::
+except ImportError as e:
   print("Scipy version lower than 1.1.0")
 
 from random import choice
