@@ -28,7 +28,15 @@ import networkx as nx
 import numpy as np
 from manta.flow import diffusion
 from manta.cluster import cluster_graph
-from scipy.stats import binom_test, norm
+from scipy import __version__ as scipy_version
+try:
+    if tuple(map(int, scipy_version.split('.')[:2])) < (1, 7):
+        from scipy.stats import binom_test, norm
+    else:
+        from scipy.stats import binomtest as binom_test, norm
+except ImportError as e::
+  print("Scipy version lower than 1.1.0")
+
 from random import choice
 import sys
 import os
